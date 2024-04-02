@@ -11,7 +11,7 @@ install_requires = read_requirements()
 
 setup(
     name='aic_tools_alpaca',
-    version='0.0.1',
+    version='0.0.2',
     packages=find_packages(),
     description='Alpaca tools for AI Characters',
     long_description_content_type='text/markdown',

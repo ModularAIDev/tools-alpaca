@@ -1,6 +1,18 @@
-from crewai_tools import tool
-from config import __account as acc
+import os
 
+from crewai_tools import tool
+
+
+from dotenv import load_dotenv
+from alpaca.trading.client import TradingClient
+
+load_dotenv()
+api_key_id = os.getenv('API_KEY_ID')
+secret_key = os.getenv('SECRET_KEY')
+
+trading_client = TradingClient(api_key_id, secret_key)
+
+acc = trading_client.get_account()
 
 @tool("returns Alpaca accountount restriction or not")
 def check_if_account_restricted() -> bool:
