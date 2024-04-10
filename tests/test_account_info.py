@@ -1,25 +1,26 @@
 import unittest
 import random
-from unittest.mock import patch, Mock
-from tools_alp.account_info import _check_account_status_logic, _print_buying_power_logic
+from unittest.mock import patch, Mock, MagicMock
+from aic_tools_alpaca.account_info import CheckIfAccountRestricted
+from aic_tools_alpaca.account_info import GetBuyingPower
 
 
 class TestAccountFunctions(unittest.TestCase):
-    @patch('tools_alp.account_info.acc')
+    @patch('aic_tools_alpaca.account_info.acc')
     def test_check_account_status_blocked(self, mock_acc):
         mock_acc.trading_blocked = True
-        self.assertEqual(_check_account_status_logic(), 'Account is currently restricted from trading.')
+        self.assertTrue(CheckIfAccountRestricted()._run())
     
-    @patch('tools_alp.account_info.acc')
+    @patch('aic_tools_alpaca.account_info.acc')
     def test_check_account_status_not_blocked(self, mock_acc):
         mock_acc.trading_blocked = False
-        self.assertIsNone(_check_account_status_logic(), None)
+        self.assertFalse(CheckIfAccountRestricted()._run())
         
-    @patch('tools_alp.account_info.acc')
+    @patch('aic_tools_alpaca.account_info.acc')
     def test_print_buying_power(self, mock_acc):
         random_buying_power = random.randint(10000, 200000)
         mock_acc.buying_power = random_buying_power
-        self.assertEqual(_print_buying_power_logic(), f'{random_buying_power}$ is available as buying power.')
+        self.assertEqual(GetBuyingPower()._run(), f"{random_buying_power}$")
 
 
 if __name__ == '__main__':
