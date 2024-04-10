@@ -14,13 +14,13 @@ trading_client = TradingClient(api_key_id, secret_key)
 
 acc = trading_client.get_account()
 
-@tool("returns Alpaca accountount restriction or not")
+@tool("returns Alpaca accountant restriction or not")
 def check_if_account_restricted() -> bool:
     """Return if account is restricted or not."""
     return acc.trading_blocked
 
 
-@tool("Get buying power on Alpaca (accountount purchasing power).")
+@tool("Get buying power on Alpaca (accountant purchasing power).")
 def get_buying_power() -> str:
-    """Returns a string with the number of dollars as the purchasing power of the accountount."""
+    """Returns a string with the number of dollars as the purchasing power of the accountant."""
     return f"{acc.buying_power}$"
