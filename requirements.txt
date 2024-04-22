@@ -1,1 +1,2 @@
-crewai-tools==0.1
+alpaca-py==0.20.3
+crewai-tools==0.1.7 # already include DOTENV package

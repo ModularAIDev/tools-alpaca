@@ -29,4 +29,3 @@ class GetBuyingPower(BaseTool):
     def _run(self) -> str:
         # Your tool's logic here
         return f"{acc.buying_power}$"
-

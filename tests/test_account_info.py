@@ -1,6 +1,6 @@
 import unittest
 import random
-from unittest.mock import patch, Mock, MagicMock
+from unittest.mock import patch
 from aic_tools_alpaca.account_info import CheckIfAccountRestricted
 from aic_tools_alpaca.account_info import GetBuyingPower
 

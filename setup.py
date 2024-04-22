@@ -1,10 +1,12 @@
 from setuptools import setup, find_packages
 
+
 # Function to read the contents of the requirements file
 def read_requirements():
     with open('requirements.txt', 'r') as req:
         # Exclude any comments or empty lines
         return [line.strip() for line in req if line.strip() and not line.startswith('#')]
+
 
 # Call the function and store the requirements list
 install_requires = read_requirements()
