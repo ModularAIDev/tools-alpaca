@@ -1,13 +1,8 @@
-from aic_tools_alpaca.account_info import CheckIfAccountRestricted
-from aic_tools_alpaca.account_info import GetBuyingPower
+from aic_tools_alpaca.account_info import (
+    CheckIfTradingBlocked, GetNonMarginableBuyingPower, GetTotalBuyingPower, GetAccountEquity
+)
 
-
-status = CheckIfAccountRestricted()._run()
-
-
-print("Is restricted: ")
-print(status)
-
-buying_power_message = GetBuyingPower()._run()
-print("Current purchasing power: ")
-print(buying_power_message)
+print(f"Is trading prohibited: {CheckIfTradingBlocked()._run()}")
+print(f"Accountant total purchasing power is: {GetTotalBuyingPower()._run()}")
+print(f"Accountant purchasing power without margin is: {GetNonMarginableBuyingPower()._run()}")
+print(f"Total equinty is: {GetAccountEquity()._run()}")
