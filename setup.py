@@ -13,10 +13,11 @@ install_requires = read_requirements()
 
 setup(
     name='aic_tools_alpaca',
-    version='0.0.3',
+    version='1.0.0',
     packages=find_packages(),
     description='Alpaca tools for AI Characters',
     long_description_content_type='text/markdown',
+    long_description=open('README.md').read(),
     author='Viacheslav Kovalevskyi',
     author_email='viacheslav@kovalevskyi.com',
     license='MIT',
