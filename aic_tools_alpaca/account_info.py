@@ -1,16 +1,5 @@
-import os
-
 from crewai_tools import BaseTool
-
-from dotenv import load_dotenv
-from alpaca.trading.client import TradingClient
-
-load_dotenv()
-api_key_id = os.getenv('API_KEY_ID')
-secret_key = os.getenv('SECRET_KEY')
-
-trading_client = TradingClient(api_key_id, secret_key, paper=True)
-acc = trading_client.get_account()
+from aic_tools_alpaca import TradingClientSingleton
 
 
 class CheckIfTradingBlocked(BaseTool):
@@ -21,7 +10,7 @@ class CheckIfTradingBlocked(BaseTool):
 
     def _run(self) -> bool:
         # Your tool's logic here
-        return acc.trading_blocked
+        return TradingClientSingleton.get_instance().get_account().trading_blocked
 
 
 class GetTotalBuyingPower(BaseTool):
@@ -31,7 +20,7 @@ class GetTotalBuyingPower(BaseTool):
     If multiplier = 1 then buying_power = cash."""
 
     def _run(self) -> str:
-        return f"{acc.buying_power}$"
+        return f"{TradingClientSingleton.get_instance().get_account().buying_power}$"
 
 
 class GetNonMarginableBuyingPower(BaseTool):
@@ -39,7 +28,7 @@ class GetNonMarginableBuyingPower(BaseTool):
     description: str = "Returns a string with the number of dollars as the non marginable buying power for the account."
 
     def _run(self) -> str:
-        return f"{acc.non_marginable_buying_power}$"
+        return f"{TradingClientSingleton.get_instance().get_account().non_marginable_buying_power}$"
 
 
 class GetAccountEquity(BaseTool):
@@ -50,4 +39,4 @@ class GetAccountEquity(BaseTool):
     """
 
     def _run(self) -> str:
-        return f"{acc.equity}$"
+        return f"{TradingClientSingleton.get_instance().get_account().equity}$"
