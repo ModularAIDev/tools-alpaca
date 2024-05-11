@@ -19,7 +19,13 @@
 ### Run GitHub actions
 
 - Tests: 1. manual in web or **automaticaly in pull request**.
-- Deploy (publish in pypi.org): ... ololo
+- Deploy (publish in pypi.org):
+    - Manually: just run
+      actions → [Publish 🐍 📦 to PyPI](https://github.com/ModularAIDev/tools-alpaca/actions/workflows/deploy.yml)
+    - pub by special commit tag to only 'main' branch:
+        1. `git commit -m "your release message"` & `git push`
+        2. `git tag vx.x.x`; `x` is the numbers! Follow the pattern: 'v[0-9]+.[0-9]+.[0-9]+'
+        3. `git push origin vx.x.x`
 
 ### Alpacas Python SDK
 
