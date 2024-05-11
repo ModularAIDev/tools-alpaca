@@ -16,6 +16,11 @@
 - Or beauti → run this: `pytest ./tests`
 - run handy test → `python3 -m tests.handy_test`
 
+### Run GitHub actions
+
+- Tests: 1. manual in web or **automaticaly in pull request**.
+- Deploy (publish in pypi.org): ... ololo
+
 ### Alpacas Python SDK
 
 The pypi.org [start page](https://pypi.org/project/alpaca-py/).

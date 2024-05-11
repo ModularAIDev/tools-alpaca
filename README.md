@@ -1,7 +1,12 @@
 # tools-alpaca
 
-This package implements personalized access to the [Alpaca API](https://alpaca.markets/) based on some data. As long as
-these data are not described.
+This tooltip describes how to access the [Alpaca API](https://alpaca.markets/) for
+AI. [Crewai](https://github.com/joaomdmoura/crewAI) is used to describe tools.
+
+This tool requires secret credentials to access the Alpaca API:
+
+- API_KEY_ID
+- SECRET_KEY
 
 ## Available functionality
 

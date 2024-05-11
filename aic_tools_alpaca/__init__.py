@@ -10,7 +10,7 @@ class TradingClientSingleton:
     @classmethod
     def get_instance(cls):
         if cls._instance is None:
-            load_dotenv()  # You can sat a path to the .env file
+            load_dotenv()  # You can set a path to the .env file
             api_key_id = os.getenv('API_KEY_ID')
             secret_key = os.getenv('SECRET_KEY')
             cls._instance = TradingClient(api_key_id, secret_key, paper=True)
