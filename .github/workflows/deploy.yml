@@ -17,11 +17,11 @@ permissions:
 
 jobs:
 
-  call_test_run:
+  test_and_lint:
     uses: ./.github/workflows/run_lint_tests.yml
 
   publish:
-    needs: call_test_run
+    needs: test_and_lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4

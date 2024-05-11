@@ -14,7 +14,7 @@ permissions:
   contents: read
 
 jobs:
-  reusable_tests_run:
+  run_tests_and_lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
