@@ -1,0 +1,60 @@
+# This workflow publishes the package to pypi.org only if the existing texts have been passed successfully.
+# The workflow is launched:
+#   - automatically if there is a tag;
+#   - manually in the web interface on GitHub.
+
+
+name: Publish 🐍 📦 to PyPI
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+    workflow_dispatch: null
+
+permissions:
+  contents: read # 'write' for GitHub release ↓
+
+jobs:
+
+  call_test_run:
+    uses: ./.github/workflows/run_lint_tests.yml
+
+  publish:
+    needs: call_test_run
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install build setuptools wheel
+
+      - name: Build package
+        run: python -m build
+
+      - name: Publish package
+        uses: pypa/gh-action-pypi-publish@27b31702a0e7fc50959f5ad993c78deac1bdfc29
+        with:
+          user: __token__
+          password: ${{ secrets.PYPI_API_TOKEN }}
+
+
+
+# Future (if needed) create automaticaly GitHub releases
+#      - name: Create GitHub Release
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#          tag: ${{ github.ref_name }}
+#        run: |
+#          gh release create "$tag" \
+#              --repo="$GITHUB_REPOSITORY" \
+#              --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
+#              --generate-notes
