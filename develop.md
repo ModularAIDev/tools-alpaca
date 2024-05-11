@@ -27,6 +27,8 @@
         2. `git tag vx.x.x`; `x` is the numbers! Follow the pattern: 'v[0-9]+.[0-9]+.[0-9]+'
         3. `git push origin vx.x.x`
 
+**P.S. Do not forget increse release version in [stup.py](./setup.py)**
+
 ### Alpacas Python SDK
 
 The pypi.org [start page](https://pypi.org/project/alpaca-py/).
